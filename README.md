@@ -9,6 +9,13 @@ This project explores Angular Testing:
 - Unit testing forms
 - Unit testing services with observables as their return
 
+### How To
+
+- Clone the repo
+- run `npm install`
+- run `ng test` and keep adding/editing tests
+- See the results in console as well as @ http://localhost:9876/debug.html
+
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
