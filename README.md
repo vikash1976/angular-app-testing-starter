@@ -1,6 +1,13 @@
 # Angular App Testing
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.26.
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.2.
+
+This project explores Angular Testing:
+
+- Basic Unit testing of functions
+- Unit testing components
+- Unit testing forms
+- Unit testing services with observables as their return
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
