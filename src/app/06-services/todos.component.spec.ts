@@ -1,8 +1,8 @@
 
-import { TodosComponent } from './todos.component'; 
+import { TodosComponent } from './todos.component';
 import { TodoService } from './todo.service';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/from' ;
+import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/empty';
 import 'rxjs/add/observable/throw';
 //import * as _ from 'lodash';
@@ -12,7 +12,7 @@ describe('TodosComponent', () => {
   let service: TodoService;
 
   beforeEach(() => {
-  
+
     service = new TodoService(null); //manoeuvring with null to avoid http object creation and setup
     component = new TodosComponent(service);
   });
@@ -23,7 +23,7 @@ describe('TodosComponent', () => {
     //Arrange
     let todos = [1, 2, 3];
     spyOn(service, 'getTodos').and.callFake(() => {
-      return Observable.from([ todos ]);
+      return Observable.from([todos]);
     });
 
 
@@ -55,28 +55,57 @@ describe('TodosComponent', () => {
     //here wee are spuing on method getTodos of TodoService, callFake takes the function
     //it's faking on. We are getting control over the function we are faking
     //Arrange
-    let todo = { id : 1};
-    let spy = spyOn(service, 'add').and.returnValue(Observable.from([ todo ]));
-    
+    let todo = { id: 1 };
+    let spy = spyOn(service, 'add').and.returnValue(Observable.from([todo]));
+
     //Act
     component.add();
 
     //Assert
-    
+
     expect(component.todos.indexOf(todo)).toBeGreaterThan(-1);
   });
 
-   it('should set message to error message from server', () => {
+  it('should set message to error message from server', () => {
     //here wee are spuing on method getTodos of TodoService, callFake takes the function
     //it's faking on. We are getting control over the function we are faking
     //Arrange
     let error = "error from server";
     let spy = spyOn(service, 'add').and.returnValue(Observable.throw(error));
-   
+
     //Act
     component.add();
 
     //Assert
     expect(component.message).toBe(error);
   });
+
+  it('should call delete method of service when user confirms the window confirm popup', () => {
+    //here wee are spuing on method getTodos of TodoService, callFake takes the function
+    //it's faking on. We are getting control over the function we are faking
+    //Arrange
+    spyOn(window, 'confirm').and.returnValue(true);
+    let spy = spyOn(service, 'delete').and.returnValue(Observable.empty());
+
+    //Act
+    component.delete(10);
+
+    //Assert
+    expect(spy).toHaveBeenCalledWith(10);
+  });
+
+  it('should NOT call delete method of service when user confirms the window confirm popup', () => {
+    //here wee are spuing on method getTodos of TodoService, callFake takes the function
+    //it's faking on. We are getting control over the function we are faking
+    //Arrange
+    spyOn(window, 'confirm').and.returnValue(false);
+    let spy = spyOn(service, 'delete').and.returnValue(Observable.empty());
+
+    //Act
+    component.delete(10);
+
+    //Assert
+    expect(spy).not.toHaveBeenCalled();
+  });
+
 });
