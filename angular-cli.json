@@ -1,7 +1,7 @@
 {
   "project": {
-    "version": "1.0.0-beta.26",
-    "name": "testing-demo"
+    "version": "1.0.2",
+    "name": "angular-app-testing-starter"
   },
   "apps": [
     {
@@ -22,8 +22,8 @@
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
-      "environments": {
-        
+      "environments": { 
+               
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
