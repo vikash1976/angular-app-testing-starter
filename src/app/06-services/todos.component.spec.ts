@@ -1,4 +1,3 @@
-
 import { TodosComponent } from './todos.component';
 import { TodoService } from './todo.service';
 import { Observable } from 'rxjs/Observable';
@@ -36,7 +35,7 @@ describe('TodosComponent', () => {
   });
 
   it('should call the server and save the new todo given to it', () => {
-    //here wee are spuing on method getTodos of TodoService, callFake takes the function
+    //here wee are spying on method getTodos of TodoService, callFake takes the function
     //it's faking on. We are getting control over the function we are faking
     //Arrange
     let spy = spyOn(service, 'add').and.callFake(todo => {
@@ -52,8 +51,8 @@ describe('TodosComponent', () => {
   });
 
   it('should add the todo returned from service add method', () => {
-    //here wee are spuing on method getTodos of TodoService, callFake takes the function
-    //it's faking on. We are getting control over the function we are faking
+    //here wee are spying on method add of TodoService, returnValue allows us
+    //to retun Observables, that we created using convenience functions
     //Arrange
     let todo = { id: 1 };
     let spy = spyOn(service, 'add').and.returnValue(Observable.from([todo]));
@@ -67,8 +66,8 @@ describe('TodosComponent', () => {
   });
 
   it('should set message to error message from server', () => {
-    //here wee are spuing on method getTodos of TodoService, callFake takes the function
-    //it's faking on. We are getting control over the function we are faking
+    //here wee are spying on method add of TodoService, returnValue allows us
+    //to retun Observables, that we created using convenience functions
     //Arrange
     let error = "error from server";
     let spy = spyOn(service, 'add').and.returnValue(Observable.throw(error));
@@ -81,8 +80,8 @@ describe('TodosComponent', () => {
   });
 
   it('should call delete method of service when user confirms the window confirm popup', () => {
-    //here wee are spuing on method getTodos of TodoService, callFake takes the function
-    //it's faking on. We are getting control over the function we are faking
+    //here wee are spying on method delete of TodoService, returnValue allows us
+    //to retun Observables, that we created using convenience functions
     //Arrange
     spyOn(window, 'confirm').and.returnValue(true);
     let spy = spyOn(service, 'delete').and.returnValue(Observable.empty());
@@ -95,8 +94,8 @@ describe('TodosComponent', () => {
   });
 
   it('should NOT call delete method of service when user confirms the window confirm popup', () => {
-    //here wee are spuing on method getTodos of TodoService, callFake takes the function
-    //it's faking on. We are getting control over the function we are faking
+    //here wee are spying on method delete of TodoService, returnValue allows us
+    //to retun Observables, that we created using convenience functions
     //Arrange
     spyOn(window, 'confirm').and.returnValue(false);
     let spy = spyOn(service, 'delete').and.returnValue(Observable.empty());
