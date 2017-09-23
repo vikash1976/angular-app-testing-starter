@@ -1,6 +1,6 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/0.13/config/configuration-file.html
-
+//access coverage here <<your project>>/coverage/lcov-report/index.html
 module.exports = function (config) {
   config.set({
     basePath: '',
@@ -9,6 +9,7 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-remap-istanbul'),
+      require('karma-coverage-istanbul-reporter'), //for covergae to be ON
       require('@angular/cli/plugins/karma')
     ],
     files: [
@@ -31,7 +32,7 @@ module.exports = function (config) {
       environment: 'dev'
     },
     reporters: config.angularCli && config.angularCli.codeCoverage
-              ? ['progress', 'karma-remap-istanbul']
+              ? ['progress', 'coverage-istanbul'] //covergae-istanbul to be the value here
               : ['progress'],
     port: 9876,
     colors: true,

@@ -1,7 +1,8 @@
+
 import { UserResponseComponent } from './user.response.component'; 
 
 describe('UserResponseComponent', () => {
-  let userRespComp = null;
+  let userRespComp: UserResponseComponent;
   beforeEach(() => {
     //Arrange
     userRespComp = new UserResponseComponent();
