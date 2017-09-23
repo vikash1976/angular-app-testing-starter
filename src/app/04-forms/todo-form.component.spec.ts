@@ -31,4 +31,16 @@ describe('TodoFormComponent', () => {
     control.setValue(value);
     expect(control.valid).toBeTruthy();
   });
+  it('should pass blacklisted validation when a valid value is set', () => {
+    let control = component.form.get('name');
+    let value = 'Vikash';
+    control.setValue(value);
+    expect(control.valid).toBeTruthy();
+  });
+  it('should fail blacklisted validation when a blacklisted value is set', () => {
+    let control = component.form.get('name');
+    let value = '11AA';
+    control.setValue(value);
+    expect(control.valid).toBeFalsy();
+  });
 });

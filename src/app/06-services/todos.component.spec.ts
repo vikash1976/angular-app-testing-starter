@@ -17,7 +17,7 @@ describe('TodosComponent', () => {
   });
 
   it('should set todos to the value returned by server via todo service', () => {
-    //here wee are spuing on method getTodos of TodoService, callFake takes the function
+    //here wee are spying on method getTodos of TodoService, callFake takes the function
     //it's faking on. We are getting control over the function we are faking
     //Arrange
     let todos = [1, 2, 3];
@@ -35,7 +35,7 @@ describe('TodosComponent', () => {
   });
 
   it('should call the server and save the new todo given to it', () => {
-    //here wee are spying on method getTodos of TodoService, callFake takes the function
+    //here we are spying on method add of TodoService, callFake takes the function
     //it's faking on. We are getting control over the function we are faking
     //Arrange
     let spy = spyOn(service, 'add').and.callFake(todo => {
